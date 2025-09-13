@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHABAN-MD</title>
+    <style>
+        :root {
+            --pak-green: #01411C;
+            --pak-white: #FFFFFF;
+            --moon-color: #FFFFFF;
+            --star-color: #FFFFFF;
+        }
+        
+        /* News Ticker Styles */
+        .news-ticker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #01411C;
+            color: white;
+            padding: 8px 0;
+            z-index: 1000;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .ticker-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: ticker 60s linear infinite;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+            background: linear-gradient(45deg, 
+                #ff0000, #ff7f00, #ffff00, #00ff00, 
+                #0000ff, #4b0082, #9400d3, #ff0000);
+            background-size: 800% 800%;
+            animation: rainbow 15s ease infinite;
+            padding-top: 40px; /* Added space for news ticker */
+        }
+        
+        /* Rainbow Animation */
+        @keyframes rainbow {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+        
+        /* Animated Stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+            opacity: 0;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(1, 65, 28, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--pak-green), var(--pak-white));
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--pak-green);
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--pak-green), transparent);
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--pak-green);
+        }
+        
+        .tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 8px;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+        
+        .tab:hover {
+            background: #e0e0e0;
+        }
+        
+        .tab.active {
+            background: white;
+            color: var(--pak-green);
+            border-bottom: 2px solid white;
+            margin-bottom: -2px;
+            font-weight: 700;
+        }
+        
+        /* Rest of your existing CSS remains exactly the same */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        input[type="text"], 
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background: #fff;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        input[type="text"]:focus, 
+        input[type="password"]:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--pak-green);
+            box-shadow: 0 0 0 2px rgba(1, 65, 28, 0.1);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-group input {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .checkbox-group label {
+            margin-bottom: 0;
+        }
+        
+        button {
+            background: var(--pak-green);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            display: block;
+            width: 100%;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: #013516;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .nav-button {
+            width: 48%;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .success {
+            background: #e6ffed;
+            color: #22863a;
+            border: 1px solid #b3e6c1;
+        }
+        
+        .error {
+            background: #ffebee;
+            color: #cc0000;
+            border: 1px solid #ffcdd2;
+        }
+        
+        .config-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            border: 1px solid #eee;
+        }
+        
+        .section-title {
+            margin-top: 0;
+            color: var(--pak-green);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .loader {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0,0,0,.1);
+            border-radius: 50%;
+            border-top-color: var(--pak-green);
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .hidden-url {
+            background-color: #f0f0f0;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #333;
+            word-break: break-all;
+            position: relative;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            background: var(--pak-green);
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 4px 8px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .copy-btn:hover {
+            background: #013516;
+        }
+        
+        .step-indicator {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--pak-green);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- News Ticker -->
+    <div class="news-ticker">
+        <div class="ticker-content">
+            ✧〖 Sʜᴀʙᴀɴ Mᴅ Fᴏʀ Nᴇᴡ Uᴘᴅᴀᴛᴇ Pʟᴇᴀsᴇ Jᴏɪɴ Oғғɪᴄɪᴀʟ WʜᴀᴛsAᴘᴘ Cʜᴀɴɴᴇʟ !〗✧ &nbsp;&nbsp;&nbsp;&nbsp;
+            ✧〖 Pᴏᴡᴇʀᴇᴅ Bʏ Mʀ SʜᴀʙᴀN | BᴀɴᴅᴀʜᴇAʟɪ !〗✧ &nbsp;&nbsp;&nbsp;&nbsp;
+            ✧〖 Bᴇsᴛ Wʜᴀᴛsᴀᴘᴘ Bᴏᴛ V5 Aɴᴛɪʙᴀɴ Hᴇʀᴏᴋᴜ & WʜᴀᴛsAᴘᴘ Aᴄᴄᴏᴜɴᴛ 2025 𝐍𝐄𝐖 WʜᴀᴛsAᴘᴘ Bᴏᴛ !〗✧ &nbsp;&nbsp;&nbsp;&nbsp;
+            ✧〖 Fʀᴇᴇ Dᴇᴘʟᴏᴍᴇɴᴛ Hᴏsᴛ Sɪᴛᴇ Wᴏʀᴋɪɴɢ 24/7 !〗✧
+        </div>
+    </div>
+
+    <!-- Animated Stars Background -->
+    <div class="stars" id="starsContainer"></div>
+
+    <div class="container">
+        <h1>SHABAN-MD</h1>
+        
+        <div class="tabs">
+            <div class="tab active" onclick="switchMainTab('deploy')">DEPLOY BOT 👈</div>
+            <div class="tab" onclick="switchMainTab('verify')">FIRST VERIFY USERNAME CLICK 👈</div>
+        </div>
+        
+        <!-- Rest of your HTML remains exactly the same -->
+        <div id="deploy" class="tab-content active">
+            <form id="deployForm">
+                <div class="form-group">
+                    <label for="sessionId">SESSION ID (Required)</label>
+                    <input type="text" id="sessionId" name="sessionId" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="username">GITHUB USERNAME (Required)</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <!-- Basic Configuration Tab -->
+                <div id="basic-config" class="config-section tab-content active">
+                    <div class="step-indicator">STEP 1</div>
+                    <h3 class="section-title">Basic Configuration</h3>
+                    
+                    <div class="form-group">
+                        <label for="STICKER_NAME">Sticker Pack Name</label>
+                        <input type="text" id="STICKER_NAME" name="STICKER_NAME" value="SHABAN-MD︎">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="MENU_IMAGE_URL">Menu Image URL (Required)</label>
+                        <input type="text" id="MENU_IMAGE_URL" name="MENU_IMAGE_URL" value="https://ik.imagekit.io/mrshaban/Picsart_25-02-01_22-47-44-239.jpg" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="PREFIX">Command Prefix</label>
+                        <input type="text" id="PREFIX" name="PREFIX" value=".">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="MODE">Bot Mode</label>
+                        <select id="MODE" name="MODE">
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="BOT_NAME">Bot Name</label>
+                        <input type="text" id="BOT_NAME" name="BOT_NAME" value="SHABAN-MD V5">
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button type="button" class="nav-button" onclick="nextTab('auto-features')">Next</button>
+                    </div>
+                </div>
+                
+                <!-- Auto Features Tab -->
+                <div id="auto-features" class="config-section tab-content">
+                    <div class="step-indicator">STEP 2</div>
+                    <h3 class="section-title">Auto Features</h3>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="ALWAYS_ONLINE" name="ALWAYS_ONLINE" value="true">
+                        <label for="ALWAYS_ONLINE">Always Online</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="AUTO_BIO" name="AUTO_BIO" value="true">
+                        <label for="AUTO_BIO">Auto Bio</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="AUTO_VOICE" name="AUTO_VOICE" value="true">
+                        <label for="AUTO_VOICE">Auto Voice</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="AUTO_REPLY" name="AUTO_REPLY" value="true">
+                        <label for="AUTO_REPLY">Auto Reply</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="AUTO_STICKER" name="AUTO_STICKER" value="true">
+                        <label for="AUTO_STICKER">Auto Sticker</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="AUTO_STATUS_SEEN" name="AUTO_STATUS_SEEN" value="true" checked>
+                        <label for="AUTO_STATUS_SEEN">Auto Status Seen</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="AUTO_STATUS_REACT" name="AUTO_STATUS_REACT" value="true" checked>
+                        <label for="AUTO_STATUS_REACT">Auto Status React</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="AUTO_STATUS_REPLY" name="AUTO_STATUS_REPLY" value="true">
+                        <label for="AUTO_STATUS_REPLY">Auto Status Reply</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="AUTO_STATUS_MSG">Auto Status Message</label>
+                        <input type="text" id="AUTO_STATUS_MSG" name="AUTO_STATUS_MSG" value="*SᴇᴇN YᴏᴜʀE SᴛᴀᴛᴜS JᴜsT Nᴏᴡ Sʜᴀʙᴀɴ-Mᴅ 𓅓*">
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button type="button" class="nav-button" onclick="prevTab('basic-config')">Previous</button>
+                        <button type="button" class="nav-button" onclick="nextTab('security-features')">Next</button>
+                    </div>
+                </div>
+                
+                <!-- Security Features Tab -->
+                <div id="security-features" class="config-section tab-content">
+                    <div class="step-indicator">STEP 3</div>
+                    <h3 class="section-title">Security Features</h3>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="DELETE_LINK" name="DELETE_LINK" value="true">
+                        <label for="DELETE_LINK">Delete Links</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="ANTI_LINK" name="ANTI_LINK" value="true">
+                        <label for="ANTI_LINK">Anti Link</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="ADMIN_EVENTS" name="ADMIN_EVENTS" value="true">
+                        <label for="ADMIN_EVENTS">Admin Events</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="WELCOME" name="WELCOME" value="true">
+                        <label for="WELCOME">Welcome Message</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="ANTI_CALL" name="ANTI_CALL" value="true">
+                        <label for="ANTI_CALL">Anti Call</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="ANTI_BAD_WORD" name="ANTI_BAD_WORD" value="true">
+                        <label for="ANTI_BAD_WORD">Anti Bad Words</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="ANTI_DELETE" name="ANTI_DELETE" value="true">
+                        <label for="ANTI_DELETE">Anti Delete</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ANTI_DEL_PATH">Anti Delete Path</label>
+                        <select id="ANTI_DEL_PATH" name="ANTI_DEL_PATH">
+                            <option value="inbox">Inbox</option>
+                            <option value="all">All</option>
+                        </select>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="READ_MESSAGE" name="READ_MESSAGE" value="true">
+                        <label for="READ_MESSAGE">Read Messages</label>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button type="button" class="nav-button" onclick="prevTab('auto-features')">Previous</button>
+                        <button type="button" class="nav-button" onclick="nextTab('advanced-features')">Next</button>
+                    </div>
+                </div>
+                
+                <!-- Advanced Features Tab -->
+                <div id="advanced-features" class="config-section tab-content">
+                    <div class="step-indicator">STEP 4</div>
+                    <h3 class="section-title">Advanced Features</h3>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="AUTO_RECORDING" name="AUTO_RECORDING" value="true">
+                        <label for="AUTO_RECORDING">Auto Recording</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="AUTO_TYPING" name="AUTO_TYPING" value="true">
+                        <label for="AUTO_TYPING">Auto Typing</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="AUTO_REACT" name="AUTO_REACT" value="true">
+                        <label for="AUTO_REACT">Auto React</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="CUSTOM_REACT" name="CUSTOM_REACT" value="true">
+                        <label for="CUSTOM_REACT">Custom React</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="CUSTOM_REACT_EMOJIS">Custom React Emojis (comma separated)</label>
+                        <input type="text" id="CUSTOM_REACT_EMOJIS" name="CUSTOM_REACT_EMOJIS" value="💝,💖,💗,❤️‍🩹,❤️,🧡,💛,💚,💙,💜,🤎,🖤,🤍">
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button type="button" class="nav-button" onclick="prevTab('security-features')">Previous</button>
+                        <button type="submit" id="deployButton">
+                            <span id="buttonText">Deploy Bot</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <div id="deployResult" class="result"></div>
+        </div>
+        
+        <div id="verify" class="tab-content">
+            <form id="verifyForm">
+                <div class="form-group">
+                    <label for="verifyUsername">GitHub Username (Required)</label>
+                    <input type="text" id="verifyUsername" name="username" required>
+                </div>
+                
+                <button type="submit">Verify Username</button>
+            </form>
+            
+            <div id="verifyResult" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.getElementById('starsContainer');
+            const starsCount = 100;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random properties
+                const size = Math.random() * 3 + 1;
+                const duration = Math.random() * 3 + 2;
+                const delay = Math.random() * 5;
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.setProperty('--duration', `${duration}s`);
+                star.style.animationDelay = `${delay}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Initialize stars when page loads
+        window.onload = createStars;
+        
+        // Main tab switching (Deploy/Verify)
+        function switchMainTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+            
+            document.querySelectorAll('.tabs .tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // Reset to first tab when switching main tabs
+            if (tabName === 'deploy') {
+                document.querySelectorAll('#deploy .tab-content').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.getElementById('basic-config').classList.add('active');
+            }
+        }
+        
+        // Next tab function
+        function nextTab(nextTabId) {
+            const currentTab = document.querySelector('#deploy .tab-content.active');
+            const nextTab = document.getElementById(nextTabId);
+            
+            currentTab.classList.remove('active');
+            nextTab.classList.add('active');
+            
+            // Scroll to top of the form
+            document.getElementById('deploy').scrollTo(0, 0);
+        }
+        
+        // Previous tab function
+        function prevTab(prevTabId) {
+            const currentTab = document.querySelector('#deploy .tab-content.active');
+            const prevTab = document.getElementById(prevTabId);
+            
+            currentTab.classList.remove('active');
+            prevTab.classList.add('active');
+            
+            // Scroll to top of the form
+            document.getElementById('deploy').scrollTo(0, 0);
+        }
+        
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('URL copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+        
+        document.getElementById('deployForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const deployButton = document.getElementById('deployButton');
+            const buttonText = document.getElementById('buttonText');
+            
+            deployButton.disabled = true;
+            buttonText.innerHTML = '<span class="loader"></span> Deploying...';
+            
+            const formData = new FormData(this);
+            const data = {
+                sessionId: formData.get('sessionId'),
+                username: formData.get('username'),
+                configOptions: {}
+            };
+            
+            const configInputs = this.querySelectorAll('input, select');
+            configInputs.forEach(input => {
+                if (input.name && input.name !== 'sessionId' && input.name !== 'username') {
+                    if (input.type === 'checkbox') {
+                        data.configOptions[input.name] = input.checked;
+                    } else {
+                        data.configOptions[input.name] = input.value;
+                    }
+                }
+            });
+            
+            try {
+                const response = await fetch('/deploy', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                const resultDiv = document.getElementById('deployResult');
+                resultDiv.style.display = 'block';
+                
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `
+                        <h3>✅ Deployment Successful!</h3>
+                        <p>${result.message}</p>
+                        <div class="hidden-url">
+                            <button class="copy-btn" onclick="copyToClipboard('https://whatsapp.com/channel/0029VazjYjoDDmFZTZ9Ech3O')">Copy</button>
+                            <span>Follow Official Bot Channel</span>
+                        </div>
+                        <p>Deployments left: ${result.deploymentsLeft}</p>
+                    `;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `
+                        <h3>❌ Deployment Failed</h3>
+                        <p>${result.error || 'Unknown error'}</p>
+                    `;
+                }
+            } catch (error) {
+                const resultDiv = document.getElementById('deployResult');
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <h3>❌ Error</h3>
+                    <p>${error.message}</p>
+                `;
+            } finally {
+                deployButton.disabled = false;
+                buttonText.textContent = 'Deploy Bot';
+            }
+        });
+        
+        document.getElementById('verifyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {
+                username: formData.get('username')
+            };
+            
+            try {
+                const response = await fetch('/verify', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                const resultDiv = document.getElementById('verifyResult');
+                resultDiv.style.display = 'block';
+                
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `
+                        <h3>✅ Verification Successful!</h3>
+                        <p>${result.message}</p>
+                        <p>Username: ${result.username}</p>
+                        <p>Deployments left: ${result.deploymentsLeft}</p>
+                    `;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `
+                        <h3>❌ Verification Failed</h3>
+                        <p>${result.error}</p>
+                    `;
+                }
+            } catch (error) {
+                const resultDiv = document.getElementById('verifyResult');
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <h3>❌ Error</h3>
+                    <p>${error.message}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
