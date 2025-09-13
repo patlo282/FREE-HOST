@@ -15,9 +15,6 @@ let dbClient;
 let verifiedUsersCollection;
 let deploymentLimitsCollection;
 
-// GitHub configuration
-const MAIN_REPO = 'MRSHABAN45/SHABAN-MD';
-
 // Heroku configuration
 const HEROKU_API_KEYS = [
   process.env.HEROKU_API_KEY_1 || 'HRKU-AAcvfM1csvvUUmK4WkJVicX6KIdLtdQOWQwIPTJ1kgtA_____wiyzQv6PxUX',
@@ -150,24 +147,7 @@ async function handleVerification(req, res) {
     const existingUser = await verifiedUsersCollection.findOne({ username });
     if (existingUser) {
       return res.status(403).json({ 
-        error: 'This username has already been used. Please try a different one.',
-        verified: false
-      });
-    }
-
-    // ✅ GitHub Fork Verification (no token)
-    const forkCheckUrl = `https://api.github.com/repos/${username}/SHABAN-MD`;
-    const forkResponse = await axios.get(forkCheckUrl, {
-      headers: {
-        Accept: 'application/vnd.github+json'
-      }
-    });
-
-    const isForkedFromMainRepo = forkResponse.data?.fork && forkResponse.data?.parent?.full_name === MAIN_REPO;
-
-    if (!isForkedFromMainRepo) {
-      return res.status(403).json({
-        error: 'You must fork the SHABAN-MD repo first',
+        error: 'This username has already been used.',
         verified: false
       });
     }
@@ -192,18 +172,10 @@ async function handleVerification(req, res) {
     });
 
   } catch (error) {
-    console.error('Verification error:', error.response?.data || error.message);
-
-    if (error.response?.status === 404) {
-      return res.status(404).json({
-        error: 'Repo not found. Please make sure you have forked SHABAN-MD correctly.',
-        verified: false
-      });
-    }
-
+    console.error('Verification error:', error.message);
     res.status(500).json({ 
-      error: 'Verification failed. Make sure your GitHub username has forked the correct repo.',
-      details: error.response?.data || error.message
+      error: 'Verification failed.',
+      details: error.message
     });
   }
 }
@@ -259,7 +231,7 @@ async function setConfigVars(appName, sessionId, headers, extraConfigs = {}) {
   const configVars = {
     SESSION_ID: sessionId,
     STICKER_NAME: "SHABAN-MD︎",
-    MENU_IMAGE_URL: "https://i.ibb.co/j9G5tmNM/shaban-md.jpg",
+    MENU_IMAGE_URL: "https://ik.imagekit.io/mrshaban/Picsart_25-02-01_22-47-44-239.jpg",
     PREFIX: ".",
     MODE: "public",
     ALWAYS_ONLINE: "false",
