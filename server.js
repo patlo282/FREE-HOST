@@ -20,8 +20,8 @@ const MAIN_REPO = 'MRSHABAN45/SHABAN-MD';
 
 // Heroku configuration
 const HEROKU_API_KEYS = [
-  process.env.HEROKU_API_KEY_1 || 'HRKU-AAF8XNEoCkfIqKitqcIq2jX6KIdLtdQOWQwIPTJ1kgtA_____wg_owtP5WiD',
-  process.env.HEROKU_API_KEY_2 || 'HRKU-AAF8XNEoCkfIqKitqcIq2jX6KIdLtdQOWQwIPTJ1kgtA_____wg_owtP5WiD'
+  process.env.HEROKU_API_KEY_1 || 'HRKU-AAcvfM1csvvUUmK4WkJVicX6KIdLtdQOWQwIPTJ1kgtA_____wiyzQv6PxUX',
+  process.env.HEROKU_API_KEY_2 || 'HRKU-AAcvfM1csvvUUmK4WkJVicX6KIdLtdQOWQwIPTJ1kgtA_____wiyzQv6PxUX'
 ];
 
 // Initialize MongoDB connection
