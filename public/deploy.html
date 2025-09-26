@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SHABAN-MD — Deployments</title>
+  <meta name="description" content="Deploy SHABAN-MD on Heroku, Render, Railway, BotHosting Panel, GitHub Actions, free hosts, or any VPS with step-by-step videos."/>
+  <style>
+    :root{
+      --brand:#01411C; --brand2:#028a3d; --ink:#1f2a2e;
+      --muted:#5b6b73; --bg:#f4f7f8; --card:#fff; --border:#e6ecf0;
+      --grad:linear-gradient(135deg,var(--brand),var(--brand2));
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:"Segoe UI",Roboto,Arial,sans-serif;
+      background: var(--grad);
+      color:var(--ink);
+    }
+    .wrap{max-width:1100px;margin:40px auto;padding:0 16px}
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow:0 20px 45px rgba(0,0,0,.18);
+      overflow:hidden;
+      animation:fade .6s ease both;
+    }
+    header.hero{
+      padding:38px 28px;
+      background:linear-gradient(135deg,#fff,#f8fffb);
+      border-bottom:1px solid var(--border);
+    }
+    h1{margin:0 0 8px; color:var(--brand); font-size:2rem; letter-spacing:.2px}
+    .sub{margin:0;color:var(--muted);font-size:.96rem}
+    .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .btn{
+      text-decoration:none; padding:10px 14px; border-radius:10px;
+      border:1px solid var(--border); background:#fff; color:var(--brand);
+      font-weight:600; transition:.2s
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.10)}
+    main.content{padding:26px}
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .tile{
+      border:1px solid var(--border); border-radius:14px; padding:16px;
+      background:#ffffff; display:flex; flex-direction:column; gap:12px;
+      transition:.2s; min-height:220px
+    }
+    .tile:hover{transform:translateY(-4px); box-shadow:0 10px 22px rgba(0,0,0,.12)}
+    .logo{
+      display:flex; align-items:center; gap:12px
+    }
+    .logo img{
+      width:36px; height:36px; object-fit:contain; display:block;
+    }
+    /* Fallback badge if image not found */
+    .logo img[onerror]{background:#eef8f0;border:1px solid #cfead6;border-radius:10px;padding:6px}
+    .badge{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:36px; height:36px; border-radius:10px;
+      background:#eef8f0; border:1px solid #cfead6; color:#1e7e34; font-weight:700
+    }
+    .title{margin:0; font-weight:700; color:#0f5132}
+    .desc{margin:0; color:#4b5a61; font-size:.95rem}
+    .actions{margin-top:auto; display:flex; gap:10px; flex-wrap:wrap}
+    .btn-vid{
+      flex:1; text-align:center; background:#e8f5ee; border:1px solid #cfead6; color:#0f5132;
+      padding:10px 12px; border-radius:10px; text-decoration:none; font-weight:700
+    }
+    .btn-vid:hover{background:#dcf2e7}
+    .btn-doc{flex:1; text-align:center; background:#f3f5f7; border:1px solid var(--border); color:#273138;
+      padding:10px 12px; border-radius:10px; text-decoration:none; font-weight:700}
+    .note{
+      margin-top:22px; background:#f0fff4; border:1px solid #c7f0d2; color:#0f5132;
+      border-radius:12px; padding:14px 16px; font-size:.95rem
+    }
+    footer{
+      text-align:center; color:#eaf7ef; font-size:.95rem; margin:18px 0 30px
+    }
+    footer a{color:#fff; text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.6)}
+    footer a:hover{opacity:.9}
+    @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.grid{grid-template-columns:1fr} header.hero{padding:26px 20px} main.content{padding:20px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <header class="hero">
+        <h1>Deploy SHABAN-MD</h1>
+        <p class="sub">Choose your platform and follow the step-by-step video. All methods are beginner-friendly and safe.</p>
+        <div class="cta-row">
+          <a class="btn" href="index.html">← Home</a>
+          <a class="btn" href="contact.html">Need Help?</a>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <!-- Platforms Grid -->
+        <section class="grid">
+
+          <!-- Free Host (Your Site) -->
+          <article class="tile">
+            <div class="logo">
+              <img src="assets/freehost.svg" alt="Free Host" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex'">
+              <span class="badge" style="display:none">FH</span>
+              <h3 class="title">Free Deployment Host (Your Site)</h3>
+            </div>
+            <p class="desc">Zero-cost hosting for SHABAN-MD with 24/7 uptime (as per your guide).</p>
+            <div class="actions">
+              <a class="btn-vid" target="_blank" href="https://youtu.be/l7fYY_kfux4?si=if-VG0zXvmHh8ec5">Watch Video</a>
+              <a class="btn-doc" href="about.html">About Project</a>
+            </div>
+          </article>
+
+          <!-- Render -->
+          <article class="tile">
+            <div class="logo">
+              <img src="assets/render.svg" alt="Render" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex'">
+              <span class="badge" style="display:none">RE</span>
+              <h3 class="title">Render</h3>
+            </div>
+            <p class="desc">Easy web services & background workers. Good free tier for quick deploys.</p>
+            <div class="actions">
+              <a class="btn-vid" target="_blank" href="https://youtu.be/AHmV67K-3ow?si=iK_63I9VaBD0X7QX">Watch Video</a>
+              <a class="btn-doc" href="privacy.html">Policy Notes</a>
+            </div>
+          </article>
+
+          <!-- BotHosting Panel -->
+          <article class="tile">
+            <div class="logo">
+              <img src="assets/bothosting.svg" alt="BotHosting Panel" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex'">
+              <span class="badge" style="display:none">BH</span>
+              <h3 class="title">BotHosting Panel</h3>
+            </div>
+            <p class="desc">Panel-based hosting for bots. Quick setup with a managed UI.</p>
+            <div class="actions">
+              <a class="btn-vid" target="_blank" href="https://youtu.be/dcpoMd4HqpQ?si=-4NfC1PS2IuTJ5WL">Watch Video</a>
+              <a class="btn-doc" href="contact.html">Get Help</a>
+            </div>
+          </article>
+
+          <!-- GitHub Actions Workflow -->
+          <article class="tile">
+            <div class="logo">
+              <img src="assets/github.svg" alt="GitHub Actions" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex'">
+              <span class="badge" style="display:none">GH</span>
+              <h3 class="title">GitHub Workflow</h3>
+            </div>
+            <p class="desc">CI/CD via Actions. Push → auto build & deploy. Great for consistent releases.</p>
+            <div class="actions">
+              <a class="btn-vid" target="_blank" href="https://youtu.be/xxw7uG5Xb6M?si=O_Bs6p0RSpFiMuPy">Watch Video</a>
+              <a class="btn-doc" href="terms.html">Terms</a>
+            </div>
+          </article>
+
+          <!-- Heroku -->
+          <article class="tile">
+            <div class="logo">
+              <img src="assets/heroku.svg" alt="Heroku" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex'">
+              <span class="badge" style="display:none">HK</span>
+              <h3 class="title">Heroku</h3>
+            </div>
+            <p class="desc">Classic PaaS with buildpacks & add-ons. Perfect for quick prototypes to prod.</p>
+            <div class="actions">
+              <a class="btn-vid" target="_blank" href="https://youtu.be/eHyyFWSktqI?si=CVWFf17MEfAumOD_">Watch Video</a>
+              <a class="btn-doc" href="privacy.html">Policy Notes</a>
+            </div>
+          </article>
+
+          <!-- Railway -->
+          <article class="tile">
+            <div class="logo">
+              <img src="assets/railway.svg" alt="Railway" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex'">
+              <span class="badge" style="display:none">RW</span>
+              <h3 class="title">Railway</h3>
+            </div>
+            <p class="desc">Deploy with templates & auto-provisioned databases. (Add your video when ready.)</p>
+            <div class="actions">
+              <a class="btn-vid" target="_blank" href="#" onclick="alert('Railway video link not added yet. Send it to me and I’ll wire it up!'); return false;">Video (Coming Soon)</a>
+              <a class="btn-doc" href="contact.html">Ask Help</a>
+            </div>
+          </article>
+
+        </section>
+
+        <!-- VPS HOW-TO -->
+        <section class="note">
+          <strong>Any VPS Hosting (Generic Steps)</strong><br/>
+          1) Ubuntu 22.04 LTS server → update: <code>sudo apt update && sudo apt -y upgrade</code><br/>
+          2) Install Node.js 18+ & Git → clone your SHABAN-MD repo<br/>
+          3) Set env vars / session ID securely (use <code>.env</code>)<br/>
+          4) Install deps: <code>npm ci</code> or <code>npm install</code><br/>
+          5) Start with a process manager: <code>pm2 start npm --name shaban-md -- start</code><br/>
+          6) (Optional) Reverse proxy with Nginx + SSL (Certbot) for web dashboards/webhooks<br/>
+          Need help? <a href="contact.html">Contact us</a> — hum setup me madad kar denge.
+        </section>
+
+      </main>
+    </div>
+
+    <footer>
+      <span>© <script>document.write(new Date().getFullYear())</script> SHABAN-MD • 
+        <a href="index.html">Home</a> • 
+        <a href="about.html">About</a> • 
+        <a href="privacy.html">Privacy</a> • 
+        <a href="terms.html">Terms</a> • 
+        <a href="contact.html">Contact</a>
+      </span>
+    </footer>
+  </div>
+</body>
+</html>
