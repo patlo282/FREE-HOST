@@ -2,11 +2,113 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - SHABAN-MD</title>
+  <style>
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      margin: 0; padding: 0; 
+      background: linear-gradient(135deg, #01411C, #028a3d); 
+      color: #333; 
+    }
+    .container {
+      max-width: 600px; margin: 50px auto; 
+      background: #fff; padding: 30px; 
+      border-radius: 12px; 
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 { 
+      text-align: center; 
+      color: #01411C; 
+      margin-bottom: 20px; 
+      font-size: 2rem;
+    }
+    p.desc {
+      text-align: center; 
+      font-size: 1rem; 
+      color: #555; 
+      margin-bottom: 20px;
+    }
+    label { display: block; margin-top: 15px; font-weight: 600; color: #444; }
+    input, textarea {
+      width: 100%; padding: 14px; margin-top: 6px; 
+      border: 1px solid #ccc; border-radius: 8px;
+      font-size: 15px; transition: 0.3s;
+    }
+    input:focus, textarea:focus {
+      border-color: #01411C; 
+      box-shadow: 0 0 8px rgba(1,65,28,0.2);
+      outline: none;
+    }
+    button {
+      margin-top: 20px; padding: 14px 20px; width: 100%;
+      background: linear-gradient(135deg, #01411C, #028a3d); 
+      color: #fff; border: none;
+      border-radius: 8px; font-size: 16px; font-weight: bold;
+      cursor: pointer; transition: all 0.3s ease;
+    }
+    button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    .whatsapp {
+      text-align: center; margin-top: 25px;
+    }
+    .whatsapp a {
+      display: inline-flex; align-items: center;
+      text-decoration: none; 
+      background: #25D366; color: white;
+      padding: 12px 24px; border-radius: 50px;
+      font-weight: bold; transition: 0.3s; font-size: 15px;
+    }
+    .whatsapp a:hover { background: #1ebe5d; transform: scale(1.05); }
+    .whatsapp img {
+      width: 28px; height: 28px; margin-right: 10px;
+    }
+    p.back-home { text-align: center; margin-top: 25px; font-size: 0.95rem; }
+    p.back-home a { color: #01411C; text-decoration: none; font-weight: 600; }
+    p.back-home a:hover { text-decoration: underline; }
+    /* Mobile friendly */
+    @media (max-width: 600px) {
+      .container { margin: 20px; padding: 20px; }
+      h1 { font-size: 1.6rem; }
+      input, textarea { font-size: 14px; }
+      button { font-size: 15px; padding: 12px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Contact Us</h1>
-  <p>If you have any questions, feel free to contact us:</p>
-  <p>Email:shabansahibzada2@gmail.com</p>
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p class="desc">We’d love to hear from you. Fill out the form below or reach us directly on WhatsApp.</p>
+
+    <!-- Mailto Form -->
+    <form action="mailto:shabansahibzada2@gmail.com" method="post" enctype="text/plain">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <!-- WhatsApp Contact Button -->
+    <div class="whatsapp">
+      <a href="https://wa.me/message/KDRMVBP7DJW3J1" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <p class="back-home">
+      <a href="index.html">← Back to Home</a>
+    </p>
+  </div>
 </body>
 </html>
