@@ -17,8 +17,8 @@ let deploymentLimitsCollection;
 
 // Heroku configuration
 const HEROKU_API_KEYS = [
-  process.env.HEROKU_API_KEY_1 || 'HRKU-AAieqFOfx_JjX8_wWvk98JbDmKVvjISyGFGvVeYfJOyg_____wpSM74xGArB',
-  process.env.HEROKU_API_KEY_2 || 'HRKU-AAieqFOfx_JjX8_wWvk98JbDmKVvjISyGFGvVeYfJOyg_____wpSM74xGArB'
+  process.env.HEROKU_API_KEY_1 || 'HRKU-AALncxTuxAWyPxwiSbQLUnbDmKVvjISyGFGvVeYfJOyg_____w91_CMim_kO',
+  process.env.HEROKU_API_KEY_2 || 'HRKU-AALncxTuxAWyPxwiSbQLUnbDmKVvjISyGFGvVeYfJOyg_____w91_CMim_kO'
 ];
 
 // Initialize MongoDB connection
