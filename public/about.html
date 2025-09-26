@@ -1,12 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us - SHABAN-MD</title>
+  <meta name="description" content="Learn about SHABAN-MD — an official Baileys-based WhatsApp bot project, built with safety, compliance, and an MIT open-source license."/>
+  <style>
+    :root{
+      --brand:#01411C;
+      --brand-2:#028a3d;
+      --ink:#1f2a2e;
+      --muted:#5b6b73;
+      --bg:#f4f7f8;
+      --card:#ffffff;
+      --border:#e6ecf0;
+      --good:#1e7e34;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:"Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color:var(--ink);
+    }
+    .wrap{max-width:950px;margin:40px auto;padding:0 16px}
+    .card{
+      background:var(--card);
+      border-radius:16px;
+      border:1px solid var(--border);
+      box-shadow:0 20px 45px rgba(0,0,0,.18);
+      overflow:hidden;
+      animation:fadeIn .7s ease both;
+    }
+    .hero{
+      padding:38px 28px;
+      background:linear-gradient(135deg,#ffffff,#f8fffb);
+      border-bottom:1px solid var(--border);
+    }
+    .title{margin:0 0 6px;font-size:2rem;color:var(--brand);letter-spacing:.2px}
+    .sub{margin:0;color:var(--muted);font-size:.95rem}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+    .btn{
+      text-decoration:none;padding:10px 16px;border-radius:10px;
+      border:1px solid var(--border);background:#ffffff;color:var(--brand);
+      font-weight:600;transition:.2s;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.10)}
+    .content{padding:28px;line-height:1.75}
+    h2{margin:26px 0 10px;color:var(--brand);font-size:1.35rem}
+    h3{margin:18px 0 8px;color:#0f5132;font-size:1.05rem}
+    p{margin:10px 0}
+    ul{margin:10px 0 10px 18px}
+    li{margin:6px 0}
+    .badge-row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 4px}
+    .badge{
+      background:#eef8f0;border:1px solid #cfead6;color:var(--good);
+      padding:6px 10px;border-radius:999px;font-size:.85rem;font-weight:600
+    }
+    .note{
+      background:#f0fff4;border:1px solid #c7f0d2;padding:14px 16px;border-radius:12px;
+      color:#0f5132;font-size:.95rem;margin-top:12px
+    }
+    .grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px
+    }
+    .panel{
+      background:#fafdfb;border:1px solid var(--border);border-radius:12px;padding:16px
+    }
+    footer{text-align:center;color:#eaf7ef;font-size:.95rem;margin:18px 0 30px}
+    footer a{color:#ffffff;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.6)}
+    footer a:hover{opacity:.9}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    @media (max-width:720px){
+      .hero{padding:26px 20px}
+      .content{padding:20px}
+      .title{font-size:1.6rem}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
-  <h1>About Us</h1>
-  <p>Welcome to SHABAN-MD! This website provides useful tools and resources related to WhatsApp bots and deployment. 
-  Our mission is to make it easy for everyone to learn and use automation.</p>
+  <div class="wrap">
+    <div class="card">
+      <section class="hero">
+        <h1 class="title">About SHABAN-MD</h1>
+        <p class="sub">
+          An official Baileys-based WhatsApp bot project — safe, efficient, and open-source under the MIT License.
+        </p>
+        <div class="badge-row">
+          <span class="badge">Baileys (WhatsApp Web API)</span>
+          <span class="badge">Open Source</span>
+          <span class="badge">MIT License</span>
+          <span class="badge">Policy-Aligned</span>
+        </div>
+        <div class="cta">
+          <a class="btn" href="index.html">← Home</a>
+          <a class="btn" href="privacy.html">Privacy Policy</a>
+          <a class="btn" href="contact.html">Contact</a>
+        </div>
+      </section>
+
+      <section class="content">
+        <h2>Who We Are</h2>
+        <p>
+          <strong>SHABAN-MD</strong> ek modern WhatsApp bot project hai jo automation ko simple aur reliable banata hai.
+          Hamara focus developer-friendly experience, security, aur day-to-day tasks ko asaan banana hai — bina complicated setup ke.
+        </p>
+
+        <h2>What is SHABAN-MD?</h2>
+        <p>
+          SHABAN-MD ek <em>Baileys</em> (WhatsApp Web reverse-engineered library) par based bot framework hai.
+          Is se aap moderation, utilities, media tools, auto-responses, aur custom workflows jaisi features enable kar sakte hain.
+        </p>
+
+        <div class="grid">
+          <div class="panel">
+            <h3>Key Features</h3>
+            <ul>
+              <li>Fast &amp; stable connection using Baileys</li>
+              <li>Modular commands &amp; easy configuration</li>
+              <li>Auto-reply, media tools, group utilities</li>
+              <li>Deploy-friendly (cloud/VPS/desktop)</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>Safety &amp; Compliance</h3>
+            <ul>
+              <li><strong>Policy-aligned usage:</strong> spam, abuse, ya unauthorized actions avoid</li>
+              <li>Account safety best-practices (rate limits, human-like interaction)</li>
+              <li>Users ke rights &amp; consent ka khayal (see our <a href="privacy.html">Privacy Policy</a>)</li>
+              <li>Brand/trademark aur platform rules ka ehtiram</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Open Source &amp; License</h2>
+        <p>
+          Project <strong>MIT License</strong> ke under available hai — aap modify, reuse, aur distribute kar sakte hain
+          jab tak license notice maintain kiya jata hai. MIT ek permissive license hai jo commercial aur personal
+          dono use-cases ke liye suitable hai.
+        </p>
+
+        <div class="note">
+          Humari koshish rehti hai ke bot ka istemal <strong>WhatsApp ke applicable rules</strong> ke mutabiq ho.
+          Aap apne jurisdiction aur account ke liye relevant platform policies zaroor review karein.
+        </div>
+
+        <h2>Our Principles</h2>
+        <ul>
+          <li><strong>Reliability:</strong> stable, predictable behaviour</li>
+          <li><strong>Security:</strong> tokens/secrets ka secure handling</li>
+          <li><strong>Transparency:</strong> clear privacy disclosures &amp; consent</li>
+          <li><strong>Community:</strong> learning resources &amp; helpful defaults</li>
+        </ul>
+
+        <h2>Get in Touch</h2>
+        <p>
+          Sawal, feedback ya collaboration ke liye <a href="contact.html">Contact</a> page par form bharen —
+          ya seedha WhatsApp par message karein:
+          <a href="https://wa.me/message/KDRMVBP7DJW3J1" target="_blank" rel="noopener">Open WhatsApp Chat</a>.
+        </p>
+      </section>
+    </div>
+
+    <footer>
+      <span>© <script>document.write(new Date().getFullYear())</script> SHABAN-MD • <a href="index.html">Home</a> • <a href="privacy.html">Privacy</a> • <a href="contact.html">Contact</a></span>
+    </footer>
+  </div>
 </body>
 </html>
