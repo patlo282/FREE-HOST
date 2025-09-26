@@ -134,27 +134,27 @@
         }
         
         .tabs {
-            display: flex;
-            margin-bottom: 25px;
-            border-bottom: 2px solid var(--pak-green);
-        }
-        
-        .tab {
-            padding: 12px 25px;
-            cursor: pointer;
-            background: #f5f5f5;
-            border: 1px solid #ddd;
-            border-bottom: none;
-            border-radius: 5px 5px 0 0;
-            margin-right: 8px;
-            font-weight: 600;
-            color: #555;
-            transition: all 0.3s ease;
-        }
-        
-        .tab:hover {
-            background: #e0e0e0;
-        }
+  display: flex;
+  justify-content: center; /* tabs center me aa jayenge */
+}
+
+.tab {
+  padding: 8px 15px;   /* pehle bade padding thi, ab chhoti */
+  font-size: 14px;     /* font bhi chhota kar diya */
+  cursor: pointer;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  margin-right: 6px;
+  font-weight: 600;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  background: #e0e0e0;
+}
         
         .tab.active {
             background: white;
@@ -365,10 +365,13 @@
     <div class="container">
         <h1>SHABAN MD</h1>
         
-        <div class="tabs">
-            <div class="tab active" onclick="switchMainTab('deploy')">DEPLOY BOT 👈🛜</div>
-            <div class="tab" onclick="switchMainTab('verify')">FIRST VERIFY USERNAME CLICK 👈🛜</div>
-        </div>
+       <div class="tabs">
+  <div class="tab active" onclick="switchMainTab('deploy')">DEPLOY BOT 👈</div>
+  <div class="tab" onclick="switchMainTab('verify')">VERIFY USERNAME 👈</div>
+  <div class="tab">
+    <a href="deploy.html" style="text-decoration:none; color:inherit; display:block;">FULL GUIDE 📽️</a>
+  </div>
+</div>
         
         <!-- Rest of your HTML remains exactly the same -->
         <div id="deploy" class="tab-content active">
